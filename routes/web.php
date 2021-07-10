@@ -14,6 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'MainController@index')->name('prediksi');
+Route::middleware('auth')->group(function () {
+  Route::get('/', 'MainController@index')->name('prediksi');
+  Route::resource('data', 'CurahHujanController');
+});
 
 Auth::routes();
