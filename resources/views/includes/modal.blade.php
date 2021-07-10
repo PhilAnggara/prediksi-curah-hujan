@@ -15,11 +15,11 @@
 
           <div class="form-group">
             <label for="tanggal">Tanggal</label>
-            <input type="date" class="form-control" id="tanggal" name="tanggal">
+            <input type="date" class="form-control" id="tanggal" name="tanggal" value="{{ old('tanggal') }}" required>
           </div>
           <div class="form-group">
-            <label for="nilai">Curah Hujan</label>
-            <input type="text" class="form-control" id="nilai" name="nilai">
+            <label for="nilai_curah_hujan">Curah Hujan</label>
+            <input type="text" class="form-control" id="nilai_curah_hujan" name="nilai_curah_hujan" value="{{ old('nilai_curah_hujan') }}" required>
           </div>
 
         </div>
@@ -36,7 +36,7 @@
 </div>
 
 
-<!-- Modal tambah data -->
+<!-- Modal ubah data -->
 @foreach ($items as $item)
 <div class="modal fade" id="editModal-{{ $item->id }}" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -47,18 +47,19 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form action="{{ route('data.store') }}" method="post" enctype="multipart/form-data">
+      <form action="{{ route('data.update', $item->id) }}" method="post" enctype="multipart/form-data">
+        @method('put')
         @csrf
 
         <div class="modal-body">
 
           <div class="form-group">
             <label for="tanggal">Tanggal</label>
-            <input type="date" class="form-control" id="tanggal" name="tanggal" value="{{ $item->tanggal }}">
+            <input type="date" class="form-control" id="tanggal" name="tanggal" value="{{ $item->tanggal }}" required>
           </div>
           <div class="form-group">
-            <label for="nilai">Curah Hujan</label>
-            <input type="text" class="form-control" id="nilai" name="nilai" value="{{ $item->nilai }}">
+            <label for="nilai_curah_hujan">Curah Hujan</label>
+            <input type="text" class="form-control" id="nilai_curah_hujan" name="nilai_curah_hujan" value="{{ $item->nilai }}" required>
           </div>
 
         </div>

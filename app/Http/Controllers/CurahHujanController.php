@@ -36,9 +36,14 @@ class CurahHujanController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'tanggal' => 'required|date',
+            'nilai_curah_hujan' => 'required|numeric'
+        ]);
+
         CurahHujan::create([
             'tanggal' => $request->tanggal,
-            'nilai' => $request->nilai
+            'nilai' => $request->nilai_curah_hujan
         ]);
 
         return redirect()->back()->with('success', 'Data Berhasil Ditambahkan!');
@@ -75,7 +80,20 @@ class CurahHujanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
+        $request->validate([
+            'tanggal' => 'required|date',
+            'nilai_curah_hujan' => 'required|numeric'
+        ]);
+
+        $data = CurahHujan::find($id);
+
+        $data->tanggal = $request->tanggal;
+        $data->nilai = $request->nilai_curah_hujan;
+
+        $data->save();
+
+        return redirect()->back()->with('success', 'Data Berhasil Diubah!');
     }
 
     /**
