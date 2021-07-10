@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CurahHujan;
 use Illuminate\Http\Request;
 
 class CurahHujanController extends Controller
@@ -13,7 +14,8 @@ class CurahHujanController extends Controller
      */
     public function index()
     {
-        return view('pages.data');
+        $items = CurahHujan::all()->sortDesc();
+        return view('pages.data', compact('items'));
     }
 
     /**
@@ -34,7 +36,12 @@ class CurahHujanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        CurahHujan::create([
+            'tanggal' => $request->tanggal,
+            'nilai' => $request->nilai
+        ]);
+
+        return redirect()->back()->with('success', 'Data Berhasil Ditambahkan!');
     }
 
     /**

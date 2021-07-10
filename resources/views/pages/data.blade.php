@@ -34,19 +34,21 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>Senin, 5 Juli 2021</td>
-                    <td>30.5</td>
-                    <td>
-                      <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-                        <button type="button" class="btn icon btn-primary" data-toggle="modal" data-target="#editModal-id">
-                          <i class="fal fa-edit" data-toggle="tooltip" title="Edit"></i>
-                        </button>
-                        <button type="button" class="btn icon btn-danger" data-toggle="modal" data-target="#hapusModal-id">
-                          <i class="fal fa-trash-alt" data-toggle="tooltip" title="Hapus"></i>
-                        </button>
-                    </div>
-                  </tr>
+                  @foreach ($items as $item)
+                    <tr>
+                      <td>{{ Carbon\Carbon::parse($item->tanggal)->isoFormat('dddd, D MMMM YYYY') }}</td>
+                      <td>{{ $item->nilai }}</td>
+                      <td>
+                        <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+                          <button type="button" class="btn icon btn-primary" data-toggle="modal" data-target="#editModal-{{ $item->id }}">
+                            <i class="fal fa-edit" data-toggle="tooltip" title="Edit"></i>
+                          </button>
+                          <button type="button" class="btn icon btn-danger" data-toggle="modal" data-target="#hapusModal-{{ $item->id }}">
+                            <i class="fal fa-trash-alt" data-toggle="tooltip" title="Hapus"></i>
+                          </button>
+                      </div>
+                    </tr>
+                  @endforeach
                 </tbody>
               </table>
             </div>
@@ -57,6 +59,7 @@
     </div>
   </section>
 </div>
+@include('includes.modal')
 @endsection
 
 @push('addon-style')
