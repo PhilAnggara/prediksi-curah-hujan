@@ -104,6 +104,10 @@ class CurahHujanController extends Controller
      */
     public function destroy($id)
     {
-        //
+        
+        $data = CurahHujan::find($id);
+        $data->delete();
+
+        return redirect()->back()->with('toast_success', 'Data Dihapus!');
     }
 }

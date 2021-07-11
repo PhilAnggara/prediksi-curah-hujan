@@ -1,5 +1,7 @@
 <link rel="stylesheet" href="{{ url('frontend/css/bootstrap.css') }}">
 
+{{-- <link rel="stylesheet" href="{{ url('frontend/vendors/apexcharts/apexcharts.css') }}"> --}}
+
 <link rel="stylesheet" href="{{ url('frontend/vendors/datatables/dataTables.bootstrap4.min.css') }}">
 
 <link rel="stylesheet" href="{{ url('frontend/vendors/chartjs/Chart.min.css') }}">

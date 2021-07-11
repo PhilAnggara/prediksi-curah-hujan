@@ -10,4 +10,8 @@
 <script src="{{ url('frontend/vendors/datatables/jquery.dataTables.min.js') }}"></script>
 <script src="{{ url('frontend/vendors/datatables/dataTables.bootstrap4.min.js') }}"></script>
 
+<script src="{{ url('frontend/vendors/apex-charts/apexcharts.min.js') }}"></script>
+{{-- <script src="{{ url('frontend/vendors/apexcharts/apexcharts.min.js') }}"></script> --}}
+{{-- <script src="{{ url('frontend/js/pages/ui-apexchart.js') }}"></script> --}}
+
 <script src="{{ url('frontend/js/main.js') }}"></script>
